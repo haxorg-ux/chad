@@ -1,0 +1,16 @@
+{
+  "name": "John Doe",
+  "age": 25,
+  "email": "johndoe@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "postalCode": "10001"
+  },
+  "isActive": true,
+  "languages": [
+    "English",
+    "Spanish",
+    "French"
+  ]
+}

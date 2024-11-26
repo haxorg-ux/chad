@@ -7,6 +7,7 @@ local M = {}
 
 M.base46 = {
   theme = "onedark",
+  integrations = { "dap" },
 
   hl_override = {
     Comment = { italic = true },

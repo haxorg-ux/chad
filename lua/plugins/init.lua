@@ -8,7 +8,6 @@ return {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
@@ -28,10 +27,13 @@ return {
         ensure_installed = {
           "basedpyright",
           "black",
-          -- "mypy",
-          -- "ruff",
-          -- "debugpy",
+          "mypy",
+          "ruff",
+          "debugpy",
           "prettier",
+          "tailwindcss",
+          "ts_ls",
+          "jsonls",
         },
         run_on_start = true, -- Forzar instalación al inicio
       }
@@ -47,38 +49,48 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-
-    opts = {
-      view = {
-
-        width = 30, -- or 30
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "python",
-      },
-    },
-  },
-  {
-    "folke/trouble.nvim",
-    lazy = false,
+    "zapling/mason-conform.nvim",
+    event = "VeryLazy",
+    dependencies = { "conform.nvim" },
     config = function()
-      require("trouble").setup {
-        opts = {},
-        cmd = "Trouble",
-      }
+      require "configs.mason-conform"
     end,
   },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lspconfig" },
+    config = function()
+      require "configs.mason-lspconfig"
+    end,
+  },
+
+  {
+    "rshkarin/mason-nvim-lint",
+    event = "VeryLazy",
+    dependencies = { "nvim-lint" },
+    config = function()
+      require "configs.mason-lint"
+    end,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.lint"
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    configs = function()
+      return require "configs.treesitter"
+    end,
+  },
+
   {
     "tpope/vim-fugitive",
     cmd = {
