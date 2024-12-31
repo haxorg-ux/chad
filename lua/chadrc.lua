@@ -19,6 +19,31 @@ M.ui = {
   tabufline = {
     lazyload = false,
   },
+  statusline = {
+    -- theme = "vscode_colored",
+
+    -- separator_style = "round",
+
+    order = {
+      "mode",
+      "git",
+      "file",
+      "%=", -- Separator
+      "lsp_msg", -- LSP status message
+      "%=", -- Separator
+      "diagnostics", -- LSP client info
+      -- "encoding", -- Custom module
+      -- "cwd", -- Current working directory
+      "cursor", -- Another custom module
+    },
+
+    modules = {
+      encoding = function()
+        local encoding = vim.bo.fileencoding ~= "" and vim.bo.fileencoding or "no encode"
+        return "%#st_mode#" .. encoding .. " "
+      end,
+    },
+  },
 }
 
 return M

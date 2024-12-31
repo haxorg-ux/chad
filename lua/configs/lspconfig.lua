@@ -7,8 +7,9 @@ local lspconfig = require "lspconfig"
 lspconfig.servers = {
   "lua_ls",
   -- "clangd",
-  -- "gopls",
+  "gopls",
   "basedpyright",
+  "ts_ls",
 }
 
 -- EXAMPLE

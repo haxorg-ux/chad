@@ -34,6 +34,7 @@ return {
           "tailwindcss",
           "ts_ls",
           "jsonls",
+          "rust-analyzer",
         },
         run_on_start = true, -- Forzar instalación al inicio
       }

@@ -5,9 +5,10 @@ return {
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
+    focus = true,
   },
   cmd = "Trouble",
-    keys = {
+  keys = {
     {
       "<leader>xx",
       "<cmd>Trouble diagnostics toggle<cr>",
